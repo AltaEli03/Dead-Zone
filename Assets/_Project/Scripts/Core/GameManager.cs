@@ -19,6 +19,12 @@ namespace DeadZone.Core
         {
             if (levelController == null || playerHealth == null) return;
 
+            if (PlayerSelection.Selected != null)
+            {
+                PlayerCharacterApplier.Apply(playerHealth, PlayerSelection.Selected);
+                return;
+            }
+
             CharacterData[] characters = Resources.LoadAll<CharacterData>("Characters");
             if (characters == null || characters.Length == 0) return;
 

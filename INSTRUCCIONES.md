@@ -98,7 +98,7 @@ Cada nivel dura de 4 a 6 minutos y termina con una oleada final. **\[Propuesta\]
 | 4. Túneles del Metro | Línea 4, vagones, vías, agua | Cruzar hasta el camino al laboratorio | Poca luz (luces 2D), emboscadas desde varias direcciones |
 | 5. Centro de Investigación | Cápsulas, consolas, núcleo verde | Llegar al laboratorio principal y destruir el núcleo | Hordas densas y mutados |
 
-**Final \[Propuesta\]:** el núcleo (2000 de salud) invoca oleadas y solo recibe daño cuando se abre, entre oleada y oleada. Al destruirlo aparece la pantalla de victoria.
+**Final \[Propuesta\]:** el núcleo (1000 de salud) invoca oleadas y solo recibe daño cuando se abre, entre oleada y oleada. Al destruirlo aparece la pantalla de victoria.
 
 ## 8. Obstáculos
 

@@ -63,7 +63,7 @@ namespace DeadZone.UI
             }
             else if (levelController != null && levelController.LevelComplete)
             {
-                centerMessage.text = "NIVEL 1 COMPLETADO\nPulsa R o Start para reiniciar";
+                centerMessage.text = levelController.CompletionMessage + "\nCargando siguiente nivel...";
                 centerMessage.color = new Color(0.5f, 0.95f, 0.4f);
             }
             else if (levelController != null && !string.IsNullOrEmpty(levelController.StatusMessage))

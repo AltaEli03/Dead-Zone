@@ -1041,6 +1041,15 @@ MonoBehaviour:
   finalWave: {fileID: 156667610}
   tutorialEnd: {fileID: 819921245}
   tutorialDuration: 15
+  levelName: Nivel 1
+  objectiveText: "Llega al punto de evacuaci\xF3n"
+  objectiveCompleteText: Llega a la salida
+  requiresShotgun: 1
+  requiresFinalWave: 1
+  requiresObjective: 0
+  coreBoss: {fileID: 0}
+  nextSceneName: Level02
+  nextSceneDelay: 2.5
 --- !u!4 &293159772
 Transform:
   m_ObjectHideFlags: 0
@@ -1405,7 +1414,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -3614,7 +3623,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -6763,7 +6772,7 @@ Transform:
   m_GameObject: {fileID: 2067838766}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.17507672, y: 1.600004, z: -10}
+  m_LocalPosition: {x: 0.17777462, y: 1.600004, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

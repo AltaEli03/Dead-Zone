@@ -1,6 +1,8 @@
+using System.Collections;
 using DeadZone.Enemies;
 using DeadZone.Player;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace DeadZone.Level
 {
@@ -16,6 +18,17 @@ namespace DeadZone.Level
         [SerializeField] Transform tutorialEnd;
         [SerializeField] float tutorialDuration = 15f;
 
+        [Header("Campaign")]
+        [SerializeField] string levelName = "Nivel 1";
+        [SerializeField] string objectiveText = "Llega al punto de evacuación";
+        [SerializeField] string objectiveCompleteText = "Llega a la salida";
+        [SerializeField] bool requiresShotgun = true;
+        [SerializeField] bool requiresFinalWave = true;
+        [SerializeField] bool requiresObjective;
+        [SerializeField] CoreBoss coreBoss;
+        [SerializeField] string nextSceneName;
+        [SerializeField] float nextSceneDelay = 2.5f;
+
         bool finalWaveStarted;
         bool finalWaveCleared;
         float tutorialTimer;
@@ -27,6 +40,8 @@ namespace DeadZone.Level
         public string StatusMessage { get; private set; }
         public bool LevelComplete { get; private set; }
         public bool HasShotgun { get; private set; }
+        public bool ObjectiveComplete { get; private set; }
+        public string CompletionMessage { get; private set; } = string.Empty;
 
         void Start()
         {
@@ -37,6 +52,8 @@ namespace DeadZone.Level
 
         void Update()
         {
+            if (!LevelComplete && coreBoss != null && coreBoss.IsDead) CompleteLevel();
+
             if (finalWaveStarted && !finalWaveCleared && finalWave != null && finalWave.WaveCleared)
             {
                 finalWaveCleared = true;
@@ -69,7 +86,18 @@ namespace DeadZone.Level
         public void NotifyShotgunPicked()
         {
             HasShotgun = true;
-            SetStatus("Escopeta conseguida");
+        }
+
+        public void NotifyObjectiveComplete()
+        {
+            if (ObjectiveComplete) return;
+            ObjectiveComplete = true;
+            SetStatus("Objetivo completado");
+        }
+
+        public void ShowStatus(string message)
+        {
+            SetStatus(message);
         }
 
         public void StartFinalWave()
@@ -81,33 +109,100 @@ namespace DeadZone.Level
             SetStatus("¡Oleada final!");
         }
 
+        public void NotifyCoreDestroyed()
+        {
+            CompleteLevel();
+        }
+
         public void TryCompleteLevel()
         {
             if (LevelComplete) return;
 
-            if (!HasShotgun)
+            if (requiresShotgun && !HasShotgun)
             {
                 SetStatus("Necesitas la escopeta");
                 return;
             }
 
-            if (!finalWaveCleared)
+            if (requiresFinalWave && !finalWaveCleared)
             {
                 SetStatus("Elimina la oleada final");
                 return;
             }
 
+            if (requiresObjective && !ObjectiveComplete)
+            {
+                SetStatus("Completa el objetivo");
+                return;
+            }
+
+            if (coreBoss != null && !coreBoss.IsDead)
+            {
+                SetStatus("Destruye el núcleo");
+                return;
+            }
+
+            CompleteLevel();
+        }
+
+        void CompleteLevel()
+        {
+            if (LevelComplete) return;
+
             LevelComplete = true;
-            SetStatus("Nivel 1 completado");
+            CompletionMessage = coreBoss != null ? "CAMPAÑA COMPLETADA" : levelName + " completado";
+            SetStatus(CompletionMessage);
+
+            if (!string.IsNullOrEmpty(nextSceneName)) StartCoroutine(LoadNextScene());
+        }
+
+        IEnumerator LoadNextScene()
+        {
+            yield return new WaitForSeconds(nextSceneDelay);
+            if (!string.IsNullOrEmpty(nextSceneName))
+                SceneManager.LoadScene(nextSceneName);
         }
 
         void UpdateObjective()
         {
-            if (LevelComplete) ObjectiveText = "Nivel 1 completado";
-            else if (finalWaveStarted && !finalWaveCleared) ObjectiveText = "Elimina la oleada final";
-            else if (finalWaveCleared && !HasShotgun) ObjectiveText = "Recoge la escopeta en la evacuación";
-            else if (HasShotgun) ObjectiveText = "Llega a la salida";
-            else ObjectiveText = "Llega al punto de evacuación";
+            if (LevelComplete)
+            {
+                ObjectiveText = CompletionMessage;
+                return;
+            }
+
+            if (coreBoss != null)
+            {
+                ObjectiveText = "NÚCLEO " + Mathf.CeilToInt(coreBoss.CurrentHealth) + "/" + Mathf.CeilToInt(coreBoss.MaxHealth)
+                    + (coreBoss.IsOpen ? " · VULNERABLE" : " · PROTEGIDO");
+                return;
+            }
+
+            if (requiresShotgun && !HasShotgun)
+            {
+                ObjectiveText = finalWaveCleared ? "Recoge la escopeta en la evacuación" : objectiveText;
+                return;
+            }
+
+            if (requiresFinalWave && !finalWaveStarted)
+            {
+                ObjectiveText = objectiveText;
+                return;
+            }
+
+            if (requiresFinalWave && finalWaveStarted && !finalWaveCleared)
+            {
+                ObjectiveText = "Elimina la oleada final";
+                return;
+            }
+
+            if (requiresObjective && !ObjectiveComplete)
+            {
+                ObjectiveText = objectiveText;
+                return;
+            }
+
+            ObjectiveText = objectiveCompleteText;
         }
 
         void SetStatus(string message)
