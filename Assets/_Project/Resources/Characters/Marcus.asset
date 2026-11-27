@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0be01ba3b1fdcda4080af903d56748ec, type: 3}
+  m_Name: Marcus
+  m_EditorClassIdentifier: Assembly-CSharp::DeadZone.Data.CharacterData
+  displayName: Marcus
+  description: Superviviente pesado. Empieza con escopeta y embiste con escudo.
+  abilityDescription: "E: embestida con escudo. Bloquea el da\xF1o y atraviesa enemigos."
+  sortOrder: 2
+  config: {fileID: 11400000, guid: e8e87ae544f065841af0492371e5a2c2, type: 2}
+  bodySprite: {fileID: 21300000, guid: b21a0714989becc47868c007ab6c7392, type: 3}
+  crouchSprite: {fileID: 21300000, guid: c8ae043baedcf2449b84614ea3dafd32, type: 3}
+  startingWeapon: {fileID: 11400000, guid: 591801fc50644fe46b78dcd08088442d, type: 2}
+  ability: 3
+  ammoMultiplier: 1
+  extraJumps: 0
+  healAmount: 25
+  healInterval: 45
+  chargeSpeed: 12
+  chargeDuration: 0.35
+  chargeCooldown: 1.5
+  knifeDamage: 20
+  knifeRange: 1.1
+  knifeCooldown: 0.6

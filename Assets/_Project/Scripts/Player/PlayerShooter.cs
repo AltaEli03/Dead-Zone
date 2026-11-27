@@ -9,6 +9,7 @@ namespace DeadZone.Player
     {
         [SerializeField] PlayerInputReader input;
         [SerializeField] WeaponData weapon;
+        [SerializeField] float ammoMultiplier = 1f;
         [SerializeField] SpriteRenderer heldWeaponRenderer;
         [SerializeField] Transform muzzle;
         [SerializeField] ProjectilePool pool;
@@ -49,6 +50,19 @@ namespace DeadZone.Player
             if (weapon != null && weapon.automatic && input.FireHeld && !fireHeldOnEquip) TryFire();
         }
 
+        public void Configure(WeaponData newWeapon, float newAmmoMultiplier)
+        {
+            if (newWeapon != null) weapon = newWeapon;
+            ammoMultiplier = newAmmoMultiplier <= 0f ? 1f : newAmmoMultiplier;
+
+            startingWeapon = weapon;
+            SetAmmoFor(weapon);
+            nextShotTime = 0f;
+            fireHeldOnEquip = false;
+            if (pool != null && weapon != null) pool.Configure(weapon.projectilePrefab);
+            ApplyWeaponVisual(weapon);
+        }
+
         public void Equip(WeaponData newWeapon)
         {
             if (newWeapon == null) return;
@@ -74,7 +88,15 @@ namespace DeadZone.Player
 
         void SetAmmoFor(WeaponData data)
         {
-            currentAmmo = data == null ? 0 : data.infiniteAmmo ? -1 : data.startingAmmo;
+            if (data == null)
+            {
+                currentAmmo = 0;
+                return;
+            }
+
+            currentAmmo = data.infiniteAmmo
+                ? -1
+                : Mathf.RoundToInt(data.startingAmmo * Mathf.Max(0.01f, ammoMultiplier));
         }
 
         void OnFirePressed()

@@ -33,10 +33,16 @@ namespace DeadZone.Player
         float dodgeDirection;
         float knockbackEndTime;
         Vector2 knockbackVelocity;
+        float abilityDashEndTime;
+        float abilityDashSpeed;
+        float abilityDashDirection;
+        int extraJumps;
+        int airJumpsLeft;
 
         public bool IsGrounded { get; private set; }
         public bool IsDodging => Time.time < dodgeEndTime;
         public bool IsKnockedBack => Time.time < knockbackEndTime;
+        public bool IsAbilityDashing => Time.time < abilityDashEndTime;
         public bool IsCrouching { get; private set; }
         public bool IsSliding { get; private set; }
         public bool IsOnLadder => currentLadder != null;
@@ -71,6 +77,7 @@ namespace DeadZone.Player
             if (IsSliding && Time.time >= dodgeEndTime) IsSliding = false;
 
             IsGrounded = CheckGround();
+            if (IsGrounded) airJumpsLeft = extraJumps;
 
             bool wantCrouch = !IsOnLadder && (IsSliding || (IsGrounded && !IsDodging && input.Move.y < CrouchInputThreshold));
             if (wantCrouch != IsCrouching) SetCrouching(wantCrouch);
@@ -100,6 +107,13 @@ namespace DeadZone.Player
                 }
             }
 
+            if (jumpBufferTimer > 0f && coyoteTimer <= 0f && !IsGrounded && airJumpsLeft > 0 && !IsDodging && !IsOnLadder)
+            {
+                jumpBufferTimer = 0f;
+                airJumpsLeft--;
+                body.linearVelocity = new Vector2(body.linearVelocity.x, config.jumpVelocity);
+            }
+
             if (transform.position.y < config.fallResetY) Respawn();
         }
 
@@ -114,6 +128,12 @@ namespace DeadZone.Player
             if (IsKnockedBack)
             {
                 body.linearVelocity = new Vector2(knockbackVelocity.x, body.linearVelocity.y);
+                return;
+            }
+
+            if (IsAbilityDashing)
+            {
+                body.linearVelocity = new Vector2(abilityDashDirection * abilityDashSpeed, body.linearVelocity.y);
                 return;
             }
 
@@ -138,6 +158,30 @@ namespace DeadZone.Player
         void OnJumpPressed()
         {
             jumpBufferTimer = config.jumpBufferTime;
+        }
+
+        public void Configure(PlayerConfig newConfig, Sprite standing, Sprite crouch, int newExtraJumps)
+        {
+            if (newConfig != null)
+            {
+                config = newConfig;
+                body.gravityScale = config.gravityScale;
+            }
+
+            if (standing != null) standingSprite = standing;
+            if (crouch != null) crouchSprite = crouch;
+
+            extraJumps = Mathf.Max(0, newExtraJumps);
+            airJumpsLeft = extraJumps;
+            abilityDashEndTime = 0f;
+            SetCrouching(false);
+        }
+
+        public void StartAbilityDash(float speed, float duration, float direction)
+        {
+            abilityDashSpeed = speed;
+            abilityDashDirection = direction < 0f ? -1f : 1f;
+            abilityDashEndTime = Time.time + duration;
         }
 
         public void ApplyKnockback(Vector2 force)
@@ -201,6 +245,8 @@ namespace DeadZone.Player
             IsSliding = false;
             knockbackEndTime = 0f;
             knockbackVelocity = Vector2.zero;
+            abilityDashEndTime = 0f;
+            airJumpsLeft = extraJumps;
             currentLadder = null;
             body.gravityScale = config.gravityScale;
             if (IsCrouching) SetCrouching(false);

@@ -17,6 +17,7 @@ namespace DeadZone.Player
         public event Action FirePressed;
         public event Action SecondaryPressed;
         public event Action SwitchSecondaryPressed;
+        public event Action AbilityPressed;
 
         void Start()
         {
@@ -48,6 +49,11 @@ namespace DeadZone.Player
         public void OnSwitchSecondary(InputValue value)
         {
             if (value.isPressed) SwitchSecondaryPressed?.Invoke();
+        }
+
+        public void OnAbility(InputValue value)
+        {
+            if (value.isPressed) AbilityPressed?.Invoke();
         }
     }
 }

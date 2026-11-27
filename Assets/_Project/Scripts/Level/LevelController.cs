@@ -9,7 +9,7 @@ namespace DeadZone.Level
         const string ControlsValue =
             "A/D mover · W/S apuntar · J disparar\n" +
             "S agacharse · S + Salto slide · Espacio saltar\n" +
-            "K secundaria · Q cambiar · W/S escaleras";
+            "K secundaria · Q cambiar · E habilidad · W/S escaleras";
 
         [SerializeField] PlayerHealth playerHealth;
         [SerializeField] ZombieSpawner finalWave;

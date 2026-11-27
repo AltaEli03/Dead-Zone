@@ -45,6 +45,24 @@ namespace DeadZone.Player
             enemyCollisionIgnored = invulnerable;
         }
 
+        public void Configure(PlayerConfig newConfig)
+        {
+            if (newConfig != null) config = newConfig;
+
+            CurrentHealth = config.maxHealth;
+            Lives = config.lives;
+            isDead = false;
+            isGameOver = false;
+            invulnerableUntil = 0f;
+            SetVisualsVisible(true);
+            SetPlayerEnabled(true);
+        }
+
+        public void GrantInvulnerability(float duration)
+        {
+            invulnerableUntil = Mathf.Max(invulnerableUntil, Time.time + duration);
+        }
+
         public void Heal(float amount)
         {
             if (isDead || amount <= 0f) return;

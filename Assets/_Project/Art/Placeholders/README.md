@@ -25,6 +25,7 @@ izquierda-centro.
 | Slide (esquiva invulnerable) | Agachado + Espacio | Agachado + A |
 | Disparar | J | Gatillo derecho |
 | Secundaria / cambiar | K / Q | LT / LB |
+| Habilidad de personaje | E | X |
 
 El vector de movimiento es también el vector de apuntado. Al soltar la dirección, el arma vuelve
 a la horizontal en el último lado al que mira el personaje, su estado normal. W apunta arriba en
@@ -48,6 +49,13 @@ sus espejadas), más una pose de cuerpo agachado.
 
 El brazo+arma se voltea en vertical (`flipY`) cuando el personaje mira a la izquierda para que la
 pistola no quede boca abajo.
+
+## Selección de personaje
+
+Al empezar el Nivel 1 se elige superviviente con **A / D** o el stick y se confirma con
+**J / Espacio** o el botón sur del gamepad. Alex recibe un 25 % más de munición; Sofía se cura
+25 puntos cada 45 s; Marcus empieza con escopeta y embiste con escudo; Luna tiene doble salto,
+ballesta infinita y cuchillo. La habilidad activa de Marcus y Luna se usa con **E / X**.
 
 El collider agachado se configura en `AlexConfig.asset`:
 `crouchColliderHeight` (0.9) y `crouchColliderOffsetY` (0.45). El de pie se lee del prefab.
