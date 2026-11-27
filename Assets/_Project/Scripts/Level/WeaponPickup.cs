@@ -1,3 +1,4 @@
+using DeadZone.Core;
 using DeadZone.Data;
 using DeadZone.Player;
 using UnityEngine;
@@ -16,6 +17,7 @@ namespace DeadZone.Level
             if (shooter == null) return;
 
             shooter.Equip(weapon);
+            AudioManager.PlaySfx(AudioManager.Sfx.Pickup);
             if (levelController != null) levelController.NotifyShotgunPicked();
             gameObject.SetActive(false);
         }

@@ -84,6 +84,7 @@ namespace DeadZone.Level
             open = true;
             closeTime = Time.time + openDuration;
             if (visual != null) visual.color = openColor;
+            AudioManager.PlaySfx(AudioManager.Sfx.Core);
             if (levelController != null) levelController.ShowStatus("NÚCLEO VULNERABLE");
         }
 
@@ -97,6 +98,7 @@ namespace DeadZone.Level
             if (dead || !open) return;
 
             currentHealth -= info.amount;
+            AudioManager.PlaySfx(AudioManager.Sfx.Core);
             if (currentHealth <= 0f) Die();
         }
 
@@ -105,6 +107,7 @@ namespace DeadZone.Level
             dead = true;
             open = false;
             currentHealth = 0f;
+            AudioManager.PlaySfx(AudioManager.Sfx.Explosion);
             if (visual != null) visual.enabled = false;
             if (levelController != null) levelController.NotifyCoreDestroyed();
         }

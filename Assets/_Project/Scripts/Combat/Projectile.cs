@@ -75,6 +75,7 @@ namespace DeadZone.Combat
                     enemy.ApplyBurn(burnDamagePerSecond, burnDuration);
             }
 
+            AudioManager.PlaySfx(AudioManager.Sfx.Hit);
             Release();
         }
 
@@ -82,6 +83,7 @@ namespace DeadZone.Combat
         {
             if (released) return;
 
+            AudioManager.PlaySfx(AudioManager.Sfx.Explosion);
             if (impactEffect != null) Instantiate(impactEffect, transform.position, Quaternion.identity);
 
             Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, explosionRadius, hitMask);

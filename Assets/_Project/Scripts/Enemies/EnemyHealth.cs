@@ -126,6 +126,7 @@ namespace DeadZone.Enemies
         {
             isDead = true;
             currentHealth = 0f;
+            AudioManager.PlaySfx(AudioManager.Sfx.Zombie);
 
             Died?.Invoke(this);
             foreach (Collider2D collider2D in colliders) collider2D.enabled = false;

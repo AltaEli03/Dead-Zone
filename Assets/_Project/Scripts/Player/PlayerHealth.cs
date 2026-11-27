@@ -67,6 +67,7 @@ namespace DeadZone.Player
         {
             if (isDead || amount <= 0f) return;
             CurrentHealth = Mathf.Min(config.maxHealth, CurrentHealth + amount);
+            AudioManager.PlaySfx(AudioManager.Sfx.Heal);
         }
 
         public void TakeDamage(float damage)
@@ -85,6 +86,7 @@ namespace DeadZone.Player
 
             CurrentHealth = Mathf.Max(0f, CurrentHealth - damage);
             invulnerableUntil = Time.time + config.invulnerabilityTime;
+            AudioManager.PlaySfx(AudioManager.Sfx.Hurt);
 
             if (knockback.sqrMagnitude > 0.01f && motor != null) motor.ApplyKnockback(knockback);
             if (CurrentHealth <= 0f) Die();

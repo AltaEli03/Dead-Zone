@@ -1,4 +1,5 @@
 using DeadZone.Combat;
+using DeadZone.Core;
 using DeadZone.Data;
 using UnityEngine;
 
@@ -118,6 +119,7 @@ namespace DeadZone.Player
             float damage = weapon.damage * (powerUps != null ? powerUps.DamageMultiplier : 1f);
             float rate = weapon.shotsPerSecond * (powerUps != null ? powerUps.FireRateMultiplier : 1f);
             nextShotTime = Time.time + 1f / rate;
+            AudioManager.PlaySfx(AudioManager.Sfx.Shot);
 
             for (int i = 0; i < weapon.pellets; i++)
             {

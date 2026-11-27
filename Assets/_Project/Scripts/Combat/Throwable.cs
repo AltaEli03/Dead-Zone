@@ -57,6 +57,7 @@ namespace DeadZone.Combat
             if (exploded) return;
             exploded = true;
 
+            AudioManager.PlaySfx(AudioManager.Sfx.Explosion);
             if (data != null && data.kind == ThrowableKind.Grenade)
             {
                 if (explosionEffect != null) Instantiate(explosionEffect, transform.position, Quaternion.identity);

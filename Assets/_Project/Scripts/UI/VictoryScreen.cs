@@ -13,6 +13,7 @@ namespace DeadZone.UI
         void Start()
         {
             Time.timeScale = 1f;
+            AudioListener.pause = false;
             PlayerSelection.Selected = null;
             if (message != null)
                 message.text = "Has destruido el núcleo de investigación.\n\nPulsa R o Start para volver al inicio";
@@ -23,7 +24,7 @@ namespace DeadZone.UI
             bool restart = (Keyboard.current != null && Keyboard.current.rKey.wasPressedThisFrame)
                 || (Gamepad.current != null && Gamepad.current.startButton.wasPressedThisFrame);
 
-            if (restart) SceneManager.LoadScene("Level01");
+            if (restart) SceneManager.LoadScene("MainMenu");
         }
     }
 }

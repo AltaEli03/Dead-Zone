@@ -1,3 +1,4 @@
+using DeadZone.Core;
 using DeadZone.Data;
 using UnityEngine;
 
@@ -48,6 +49,7 @@ namespace DeadZone.Enemies
             {
                 screamUntil = Time.time + 0.5f;
                 nextScreamTime = Time.time + data.screamCooldown;
+                AudioManager.PlaySfx(AudioManager.Sfx.Scream);
                 Summon(data);
                 if (playerVisibility != null) playerVisibility.RevealFor(1.5f);
             }

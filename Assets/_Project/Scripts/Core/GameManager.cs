@@ -15,6 +15,8 @@ namespace DeadZone.Core
         [SerializeField] ZombieSpawner spawner;
         [SerializeField] LevelController levelController;
 
+        PauseMenuUI pauseMenu;
+
         void Start()
         {
             if (levelController == null || playerHealth == null) return;
@@ -22,6 +24,7 @@ namespace DeadZone.Core
             if (PlayerSelection.Selected != null)
             {
                 PlayerCharacterApplier.Apply(playerHealth, PlayerSelection.Selected);
+                CreatePauseMenu();
                 return;
             }
 
@@ -41,11 +44,22 @@ namespace DeadZone.Core
             PlayerCharacterApplier.Apply(playerHealth, character);
             Time.timeScale = 1f;
             if (input != null) input.enabled = true;
+            CreatePauseMenu();
+        }
+
+        void CreatePauseMenu()
+        {
+            if (pauseMenu != null || playerHealth == null) return;
+
+            pauseMenu = new GameObject("PauseMenuUI").AddComponent<PauseMenuUI>();
+            pauseMenu.Begin(playerHealth.GetComponent<PlayerInput>());
         }
 
         void Update()
         {
             if (playerHealth == null) return;
+
+            if (playerHealth.IsGameOver && pauseMenu != null) pauseMenu.ShowDefeat();
 
             bool won = levelController != null
                 ? levelController.LevelComplete

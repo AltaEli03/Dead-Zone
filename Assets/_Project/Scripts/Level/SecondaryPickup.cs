@@ -1,3 +1,4 @@
+using DeadZone.Core;
 using DeadZone.Player;
 using UnityEngine;
 
@@ -15,6 +16,7 @@ namespace DeadZone.Level
             if (thrower == null) return;
 
             thrower.AddSecondary(molotov, amount);
+            AudioManager.PlaySfx(AudioManager.Sfx.Pickup);
             gameObject.SetActive(false);
         }
     }

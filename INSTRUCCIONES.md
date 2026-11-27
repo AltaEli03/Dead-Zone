@@ -10,7 +10,7 @@
 
 - Unity 6.3 LTS, plantilla 2D con URP y luces 2D.
 - C#, Input System, Cinemachine, Tilemap y TextMeshPro.
-- Plataforma: PC (Windows), teclado y mouse, con soporte para gamepad. Resolución base 1920×1080.
+- Plataforma: PC (Windows), teclado y gamepad (sin mouse). Resolución base 1920×1080 y límite de 60 FPS.
 - Un jugador. Sin multijugador en la primera versión.
 - Carpetas: `Assets/_Project/` con `Scripts`, `Prefabs`, `Scenes`, `Art`, `Audio`, `Data`, `UI`.
 - Escenas: `MainMenu`, `CharacterSelect`, `Level01` a `Level05`, `Victory`.
@@ -21,17 +21,21 @@
 
 Moverse, saltar, esquivar y disparar en todas direcciones. El avance es de izquierda a derecha.
 
-| Acción | Teclado y mouse \[Propuesta\] | Gamepad \[Propuesta\] |
+| Acción | Teclado | Gamepad |
 | --- | --- | --- |
 | Moverse | A / D | Stick izquierdo |
 | Saltar | Espacio | A |
-| Esquivar (con invulnerabilidad breve) | Shift | B |
-| Apuntar | Mouse (360°) | Stick derecho |
-| Disparar | Clic izquierdo | Gatillo derecho |
-| Granada o molotov | Clic derecho | Gatillo izquierdo |
+| Apuntar (8 direcciones) | W / S | Stick izquierdo |
+| Disparar | J | Gatillo derecho |
+| Esquivar (deslizamiento) | S + Espacio | Stick abajo + A |
+| Agacharse | S | Stick abajo |
+| Granada o molotov | K | Gatillo izquierdo |
+| Cambiar secundaria | Q | LB |
+| Habilidad | E | X |
 | Subir o bajar escaleras | W / S | Stick izquierdo |
-| Interactuar | E | X |
 | Pausa | Esc | Start |
+
+En menús: W/S o flechas para elegir y J/Espacio/Enter para confirmar; en gamepad, stick o cruceta y A.
 
 - Salud: 100. Vidas: 3. Puntos de control a mitad de cada nivel. **\[Propuesta\]**
 - La cámara sigue al jugador y respeta los límites del nivel. En las zonas de oleada se bloquea hasta eliminar a los enemigos. **\[Propuesta\]**
@@ -109,11 +113,12 @@ Cada nivel dura de 4 a 6 minutos y termina con una oleada final. **\[Propuesta\]
 
 ## 9. Interfaz y audio
 
-- HUD: salud, vidas, retrato, arma y munición, granadas, power-up activo con temporizador, objetivo actual y puntuación.
-- Menús: inicio, selección de personaje, pausa, opciones de volumen, derrota y victoria.
-- Textos de historia antes de cada nivel. Todo en español.
-- Audio **\[Propuesta\]**: disparos por arma, sonidos de zombis, grito del chillón, explosiones y música por nivel, con sonidos libres o propios.
-- Guardado del nivel desbloqueado.
+- HUD: salud, vidas, enemigos, arma y munición, secundaria, power-up activo, objetivo actual y mensajes.
+- Menús: inicio, selección de personaje, pausa, opciones de volumen, derrota y victoria. Navegación con teclado y gamepad.
+- Todo en español.
+- Audio provisional: disparos, impactos, explosiones, daño, curación, recogidas, zombis, grito y núcleo; música de menú, niveles y victoria. El volumen maestro se ajusta desde el menú o la pausa y se guarda.
+- Límite de 60 FPS. Build de Windows en `Builds/Windows/DeadZone.exe`.
+- Pendiente: textos de historia antes de cada nivel y guardado del nivel desbloqueado.
 
 ## 10. Fases y criterios de aceptación
 
@@ -127,6 +132,8 @@ Cada nivel dura de 4 a 6 minutos y termina con una oleada final. **\[Propuesta\]
 | 6. Personajes | Sofía, Marcus, Luna y selección | Los cuatro completan el nivel 1 |
 | 7. Niveles 2–5 | Escenarios, objetivos, núcleo final | La campaña se termina completa |
 | 8. Pulido | Menús, audio, efectos, balance, build de Windows | El ejecutable corre sin errores y a 60 FPS |
+
+**Estado Fase 8:** menús, selección dedicada, pausa, derrota, opciones, audio provisional, límite de 60 FPS y build de Windows listos. Pendiente: prueba manual completa y ajuste de balance.
 
 ## 11. Arte
 

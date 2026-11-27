@@ -1,7 +1,7 @@
 # Fase 7: Campaña 2–5 — Plan
 
-> Fase 7 implementada en el proyecto. El commit de la Fase 6 es `caba8ef`; la Fase 7 aún no está
-> commiteada.
+> Fase 7 implementada en el proyecto. El commit de la Fase 6 es `caba8ef`; la Fase 7 quedó
+> commiteada en `9fb38d9`.
 
 **Objetivo:** Campaña jugable de Nivel 1 a Nivel 5 con objetivos, núcleo final y victoria.
 

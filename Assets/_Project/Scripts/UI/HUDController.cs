@@ -56,12 +56,7 @@ namespace DeadZone.UI
             if (controlsText != null)
                 controlsText.text = levelController != null && levelController.ShowTutorial ? levelController.ControlsText : string.Empty;
 
-            if (playerHealth.IsGameOver)
-            {
-                centerMessage.text = "GAME OVER\nPulsa R o Start para reiniciar";
-                centerMessage.color = new Color(0.95f, 0.25f, 0.2f);
-            }
-            else if (levelController != null && levelController.LevelComplete)
+            if (levelController != null && levelController.LevelComplete)
             {
                 centerMessage.text = levelController.CompletionMessage + "\nCargando siguiente nivel...";
                 centerMessage.color = new Color(0.5f, 0.95f, 0.4f);

@@ -1,3 +1,4 @@
+using DeadZone.Core;
 using DeadZone.Data;
 using DeadZone.Player;
 using UnityEngine;
@@ -15,6 +16,7 @@ namespace DeadZone.Level
             if (powerUps == null) return;
 
             powerUps.Apply(data);
+            AudioManager.PlaySfx(AudioManager.Sfx.Pickup);
             gameObject.SetActive(false);
         }
     }
