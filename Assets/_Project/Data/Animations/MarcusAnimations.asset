@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d40ac154cffaa0de3aab89080a643a6, type: 3}
+  m_Name: MarcusAnimations
+  m_EditorClassIdentifier: Assembly-CSharp::DeadZone.Data.CharacterAnimationSet
+  idle:
+  - {fileID: 21300000, guid: 3ed5bb98470ec40af7b0f5f7042da083, type: 3}
+  - {fileID: 21300000, guid: 5351beca95bb5d6431e389c8768fcbae, type: 3}
+  - {fileID: 21300000, guid: f0072dff3b2f1a2dc14cfdeec3fa2cde, type: 3}
+  - {fileID: 21300000, guid: 7c2e3b78a797f97818e6deabdd246207, type: 3}
+  idleFps: 6
+  walk:
+  - {fileID: 21300000, guid: fd695a5822df7479c5d674e6d6554c0d, type: 3}
+  - {fileID: 21300000, guid: 7c9765c9255d8fbbd05afce5eed6ea33, type: 3}
+  - {fileID: 21300000, guid: 6d74fec9ca70166f1ac0808e44ea2fa4, type: 3}
+  - {fileID: 21300000, guid: 35c2cb7b33a27334dcf264f4161e70c3, type: 3}
+  - {fileID: 21300000, guid: 5aef1c0c3bc5fc880772ce87b52afb43, type: 3}
+  walkFps: 10
+  run:
+  - {fileID: 21300000, guid: 52570968a782ed70d49bdd695d16f258, type: 3}
+  - {fileID: 21300000, guid: 1c26a21db4947fb3726be50d0430748f, type: 3}
+  - {fileID: 21300000, guid: 0d91b325489bcf3feeef899224dc86f7, type: 3}
+  - {fileID: 21300000, guid: be074d230a1b71bbd7035119bbb9f1ba, type: 3}
+  - {fileID: 21300000, guid: 75e7bf063a48b6afa5991bb3ee4830e0, type: 3}
+  runFps: 12
+  jumpRise: {fileID: 21300000, guid: 3b4951801157f50412ae2edf3fc0c8a4, type: 3}
+  jumpTop: {fileID: 21300000, guid: 5930af78a20330d297c1db9dcf838f62, type: 3}
+  jumpFall: {fileID: 21300000, guid: bd75c88edec0ba4c9769cfc9e665a713, type: 3}
+  crouch:
+  - {fileID: 21300000, guid: 3e66c9a9a4db0bd7afe76f7e8eacb043, type: 3}
+  - {fileID: 21300000, guid: 602687075ce3199288a04667987f5a93, type: 3}
+  - {fileID: 21300000, guid: dc1b9bb55fffa26493087e63fd586df2, type: 3}
+  hurt:
+  - {fileID: 21300000, guid: dfe3aba1f1a6d384dbba46389a7d328e, type: 3}
+  - {fileID: 21300000, guid: 366e381abedab6a87a48a4b5c1de35fc, type: 3}
+  - {fileID: 21300000, guid: 617fdf03437a5a278cd3088d58644b24, type: 3}
+  death:
+  - {fileID: 21300000, guid: 308f6d534182acd2aadeb8335c69618c, type: 3}
+  - {fileID: 21300000, guid: 4629954cb7ad61b302beeea2949a5f9f, type: 3}
+  onceFps: 12
+  hideWeaponArmWhenNotShooting: 1
+  standingShoulderY: 0.98
+  crouchShoulderY: 0.7
+  ability:
+  - {fileID: 21300000, guid: 1d6ef32517ffc23d1c9733647477b988, type: 3}
+  - {fileID: 21300000, guid: 3f85e917b41aa54f940ad7065b2a4b98, type: 3}
+  - {fileID: 21300000, guid: 26730ab4d6fa1addc63c99e0a659b92b, type: 3}
+  - {fileID: 21300000, guid: 588f5f085a1c9eb8864e36d4d7c6c8a0, type: 3}
+  abilityFps: 12
+  abilityOnlyWhenStill: 0
+  doubleJump:
+  - {fileID: 21300000, guid: 7c6f39d4bd940f7154a78380531a5869, type: 3}
+  - {fileID: 21300000, guid: 8608e1604e2f3cde27df2d637dfc7e17, type: 3}
+  - {fileID: 21300000, guid: a647859ad9f73a1d7a854be8a8b38e0f, type: 3}

@@ -25,6 +25,7 @@ namespace DeadZone.Player
         public string WeaponName => weapon != null ? weapon.weaponName : string.Empty;
         public int CurrentAmmo => currentAmmo;
         public bool HasInfiniteAmmo => weapon != null && weapon.infiniteAmmo;
+        public SpriteRenderer HeldWeaponRenderer => heldWeaponRenderer;
 
         void Awake()
         {

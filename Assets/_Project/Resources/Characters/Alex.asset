@@ -17,9 +17,10 @@ MonoBehaviour:
   abilityDescription: "PASIVA: +25 % de munici\xF3n en todas las armas."
   sortOrder: 0
   config: {fileID: 11400000, guid: d4ca97b07f78238408a9391366962395, type: 2}
-  bodySprite: {fileID: 21300000, guid: 2625df186212f204583b1b1670ab5385, type: 3}
-  crouchSprite: {fileID: 21300000, guid: e973835ebb501d54fbc378bae6655403, type: 3}
+  bodySprite: {fileID: 21300000, guid: ce63f0f5182b5fedd805d3fc7649da54, type: 3}
+  crouchSprite: {fileID: 21300000, guid: 5889fbcddb893a9bcbe609dc5e105394, type: 3}
   startingWeapon: {fileID: 11400000, guid: 316baf67e7d0e3742ae52ec0204c8b0c, type: 2}
+  animations: {fileID: 11400000, guid: 48d4120e00f6073fabe3aa7566dd3f30, type: 2}
   ability: 1
   ammoMultiplier: 1.25
   extraJumps: 0

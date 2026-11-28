@@ -21,6 +21,16 @@ namespace DeadZone.Player
             if (abilities == null) abilities = player.AddComponent<PlayerAbilities>();
             abilities.Configure(data);
 
+            PlayerSpriteAnimator animator = player.GetComponent<PlayerSpriteAnimator>();
+            if (data.animations != null || animator != null)
+            {
+                if (animator == null) animator = player.AddComponent<PlayerSpriteAnimator>();
+                animator.Configure(data.animations,
+                    motor != null ? motor.VisualRenderer : null,
+                    shooter != null ? shooter.HeldWeaponRenderer : null,
+                    data.config);
+            }
+
             PlayerSelection.Selected = data;
         }
     }

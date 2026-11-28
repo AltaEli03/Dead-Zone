@@ -18,9 +18,10 @@ MonoBehaviour:
     aire.'
   sortOrder: 3
   config: {fileID: 11400000, guid: d004e5affb1f16a4b8ea3e6f466d0fdb, type: 2}
-  bodySprite: {fileID: 21300000, guid: 22b6a11ba51f4534798044cdf6578524, type: 3}
-  crouchSprite: {fileID: 21300000, guid: be51c9002e6450748915d420f6c031e9, type: 3}
+  bodySprite: {fileID: 21300000, guid: d26854443ddc5944db42ece9b5d0d84a, type: 3}
+  crouchSprite: {fileID: 21300000, guid: 355abd147bf0d40318707c5bc2c421a0, type: 3}
   startingWeapon: {fileID: 11400000, guid: 4846a26098cf9e74c941fa488d2cbf9a, type: 2}
+  animations: {fileID: 11400000, guid: c77f2c3f8a318ad670c246ccc40e9b70, type: 2}
   ability: 4
   ammoMultiplier: 1
   extraJumps: 1

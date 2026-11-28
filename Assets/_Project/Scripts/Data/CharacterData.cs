@@ -25,6 +25,10 @@ namespace DeadZone.Data
         public Sprite crouchSprite;
         public WeaponData startingWeapon;
 
+        [Header("Animation (optional)")]
+        [Tooltip("Body frames for idle, run, jump, crouch, hurt and death. Empty = only Body/Crouch Sprite.")]
+        public CharacterAnimationSet animations;
+
         [Header("Ability")]
         public CharacterAbility ability;
         public float ammoMultiplier = 1f;
