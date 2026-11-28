@@ -17,9 +17,10 @@ MonoBehaviour:
   abilityDescription: "E: embestida con escudo. Bloquea el da\xF1o y atraviesa enemigos."
   sortOrder: 2
   config: {fileID: 11400000, guid: e8e87ae544f065841af0492371e5a2c2, type: 2}
-  bodySprite: {fileID: 21300000, guid: b21a0714989becc47868c007ab6c7392, type: 3}
-  crouchSprite: {fileID: 21300000, guid: c8ae043baedcf2449b84614ea3dafd32, type: 3}
+  bodySprite: {fileID: 21300000, guid: 3ed5bb98470ec40af7b0f5f7042da083, type: 3}
+  crouchSprite: {fileID: 21300000, guid: dc1b9bb55fffa26493087e63fd586df2, type: 3}
   startingWeapon: {fileID: 11400000, guid: 591801fc50644fe46b78dcd08088442d, type: 2}
+  animations: {fileID: 11400000, guid: d2fe8ed47ed17c94be2da6c9000ee5a7, type: 2}
   ability: 3
   ammoMultiplier: 1
   extraJumps: 0

@@ -98,7 +98,17 @@ namespace DeadZone.Player
             CurrentHealth = 0f;
             Lives--;
             SetPlayerEnabled(false);
-            SetVisualsVisible(false);
+
+            // with a death animation the body stays on screen; otherwise the player just disappears
+            PlayerSpriteAnimator animator = GetComponent<PlayerSpriteAnimator>();
+            if (animator != null && animator.PlaysDeath)
+            {
+                if (shooter != null && shooter.HeldWeaponRenderer != null) shooter.HeldWeaponRenderer.enabled = false;
+            }
+            else
+            {
+                SetVisualsVisible(false);
+            }
 
             if (Lives <= 0)
             {

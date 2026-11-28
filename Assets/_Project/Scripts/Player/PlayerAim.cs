@@ -23,6 +23,12 @@ namespace DeadZone.Player
             motor = GetComponent<PlayerMotor>();
         }
 
+        public void SetShoulders(float standing, float crouch)
+        {
+            if (standing > 0f) standingShoulderY = standing;
+            if (crouch > 0f) crouchShoulderY = crouch;
+        }
+
         void Update()
         {
             bool crouching = motor != null && motor.IsCrouching;

@@ -18,6 +18,11 @@ namespace DeadZone.Player
         SpriteRenderer shieldVisual;
         Coroutine healRoutine;
 
+        public event System.Action AbilityUsed;
+
+        bool HasAbilityAnimation => data != null && data.animations != null
+            && data.animations.ability != null && data.animations.ability.Length > 0;
+
         void Awake()
         {
             input = GetComponent<PlayerInputReader>();
@@ -70,7 +75,9 @@ namespace DeadZone.Player
             while (true)
             {
                 yield return new WaitForSeconds(data.healInterval);
-                if (health != null) health.Heal(data.healAmount);
+                if (health == null || health.IsDead) continue;
+                health.Heal(data.healAmount);
+                AbilityUsed?.Invoke();
             }
         }
 
@@ -88,7 +95,9 @@ namespace DeadZone.Player
             nextAbilityTime = Time.time + data.chargeCooldown;
             motor.StartAbilityDash(data.chargeSpeed, data.chargeDuration, aim != null ? aim.Facing : 1f);
             if (health != null) health.GrantInvulnerability(data.chargeDuration + 0.05f);
-            if (shieldVisual != null) StartCoroutine(ShowShield(data.chargeDuration));
+            // the charge frames already draw the shield; the placeholder is only for characters without them
+            if (shieldVisual != null && !HasAbilityAnimation) StartCoroutine(ShowShield(data.chargeDuration));
+            AbilityUsed?.Invoke();
         }
 
         IEnumerator ShowShield(float duration)
@@ -110,6 +119,7 @@ namespace DeadZone.Player
             if (data == null) return;
 
             nextAbilityTime = Time.time + data.knifeCooldown;
+            AbilityUsed?.Invoke();
             float facing = aim != null ? aim.Facing : 1f;
             Vector2 center = (Vector2)transform.position + Vector2.right * facing * 0.7f + Vector2.up * 0.5f;
             Collider2D[] hits = Physics2D.OverlapCircleAll(center, data.knifeRange, enemyMask);

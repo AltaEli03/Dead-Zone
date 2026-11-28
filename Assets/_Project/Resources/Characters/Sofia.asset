@@ -17,9 +17,10 @@ MonoBehaviour:
   abilityDescription: 'PASIVA: +25 de vida cada 45 s.'
   sortOrder: 1
   config: {fileID: 11400000, guid: a2b33765eceb99a4bb20b6423d29114e, type: 2}
-  bodySprite: {fileID: 21300000, guid: 6c7fdd8f0f3b1e14fbd8cd9ea980f43a, type: 3}
-  crouchSprite: {fileID: 21300000, guid: f264d34899ca4b34e9d7974a280606b3, type: 3}
+  bodySprite: {fileID: 21300000, guid: 004f2924ebd8913a00569597c016441b, type: 3}
+  crouchSprite: {fileID: 21300000, guid: 81501f8af9cd456f1b49b4e47750add8, type: 3}
   startingWeapon: {fileID: 11400000, guid: 316baf67e7d0e3742ae52ec0204c8b0c, type: 2}
+  animations: {fileID: 11400000, guid: c0cafe93450c0892bb7270354efbb6bf, type: 2}
   ability: 2
   ammoMultiplier: 1
   extraJumps: 0

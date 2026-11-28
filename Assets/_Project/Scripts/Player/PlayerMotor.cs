@@ -47,6 +47,9 @@ namespace DeadZone.Player
         public bool IsSliding { get; private set; }
         public bool IsOnLadder => currentLadder != null;
         public float SlideDirection => dodgeDirection;
+        public SpriteRenderer VisualRenderer => visualRenderer;
+
+        public event System.Action AirJumped;
 
         void Awake()
         {
@@ -112,6 +115,7 @@ namespace DeadZone.Player
                 jumpBufferTimer = 0f;
                 airJumpsLeft--;
                 body.linearVelocity = new Vector2(body.linearVelocity.x, config.jumpVelocity);
+                AirJumped?.Invoke();
             }
 
             if (transform.position.y < config.fallResetY) Respawn();
